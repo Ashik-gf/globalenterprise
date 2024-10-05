@@ -1,6 +1,4 @@
-import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
-import logo from "../../assets/images/logo3.png"
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -8,6 +6,8 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
+import { Fragment, useState } from 'react'
+import logo from "../../assets/images/logo3.png"
 const navigation = {
   categories: [
     {
@@ -94,7 +94,7 @@ const navigation = {
           name: 'Patch Cord',
           href: '#',
         },
-        
+
       ],
     },
     {
@@ -129,7 +129,7 @@ const navigation = {
           name: ' Sound System Accessories',
           href: '#',
         },
-      
+
       ],
     },
     {
@@ -164,8 +164,8 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'Our Project', href: '#' },
-    { name: 'About', href: '#' },
+    { name: 'Our Project', href: '/project' },
+    { name: 'About', href: '/about' },
   ],
 }
 
@@ -174,10 +174,14 @@ function classNames(...classes) {
 }
 
 export default function Categories() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  if (mobileMenuOpen) {
+
+  }
+
 
   return (
-    <div className="bg-white">
+    <div className="bg-white ">
       {/* Mobile menu */}
       <Transition.Root show={mobileMenuOpen} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileMenuOpen}>
@@ -203,12 +207,13 @@ export default function Categories() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-green-500 pb-12 shadow-xl">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-gray-300 pb-12 shadow-xl">
                 <div className="flex px-4 pb-2 pt-5">
                   <button
                     type="button"
                     className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
                     onClick={() => setMobileMenuOpen(false)}
+
                   >
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -216,16 +221,16 @@ export default function Categories() {
                 </div>
 
                 {/* Links */}
-                <Tab.Group as="div" className="mt-2 bg-green-500">
+                <Tab.Group as="div" className="mt-2 bg-gray-300">
                   <div className="border-b border-gray-200">
-                    <Tab.List className="-mb-px flex space-x-8 px-4">
+                    <Tab.List className="-mb-px flex flex-col space-x-2 items-start justify-start ">
                       {navigation.categories.map((category) => (
                         <Tab
                           key={category.name}
                           className={({ selected }) =>
                             classNames(
-                              selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900',
-                              'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium'
+                              selected ? 'border-none shadow-lg rounded-lg' : ' border-transparent text-gray-900',
+                              'flex-1 whitespace-nowrap border-b-2 px-2 py-2 text-base font-medium'
                             )
                           }
                         >
@@ -234,20 +239,18 @@ export default function Categories() {
                       ))}
                     </Tab.List>
                   </div>
+                  {/* tab panle */}
                   <Tab.Panels as={Fragment}>
                     {navigation.categories.map((category) => (
-                      <Tab.Panel key={category.name} className="space-y-12 px-4 py-6">
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-10 text-black">
+                      <Tab.Panel key={category.name} className="space-y-12 px-4 py-2">
+                        <div className=" grid grid-cols-2 gap-x-2 gap-y-2 text-black">
                           {category.featured.map((item) => (
                             <div key={item.name} className="group relative">
-                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
-                                <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
-                              </div>
-                              <a href={item.href} className="mt-6 block text-sm font-medium text-gray-900">
+                              <a href={item.href} className="mt-2 block text-sm font-medium hover:text-blue-700 text-gray-900">
                                 <span className="absolute inset-0 z-10" aria-hidden="true" />
                                 {item.name}
                               </a>
-                            
+
                             </div>
                           ))}
                         </div>
@@ -261,8 +264,8 @@ export default function Categories() {
         </Dialog>
       </Transition.Root>
 
-      {/* Hero section */}
-      <div className="relative bg-gray-900">
+      {/* Main Navabr */}
+      <div className="relative bg-gray-900 lg:px-12 md:px-8 px-4">
         <header className="relative z-10">
           <nav aria-label="Top">
 
@@ -273,12 +276,12 @@ export default function Categories() {
                   <div className="flex h-16 items-center justify-between">
                     {/* Logo (lg+) */}
                     <div className="hidden lg:flex lg:flex-1 lg:items-center">
-                      <a href="#">
+                      <a href="/">
                         <span className="sr-only">Your Company</span>
                         <img
                           className="h-32 w-auto"
                           src={logo}
-                          alt=""
+                          alt="logo"
                         />
                       </a>
                     </div>
@@ -296,7 +299,7 @@ export default function Categories() {
                                       {category.name}
                                       <span
                                         className={classNames(
-                                          open ? 'bg-white' : '',
+                                          open ? 'bg-blue-500' : '',
                                           'absolute inset-x-0 -bottom-px h-0.5 transition duration-200 ease-out'
                                         )}
                                         aria-hidden="true"
@@ -315,14 +318,14 @@ export default function Categories() {
                                   >
                                     <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
                                       {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                                      <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
+                                      <div className="absolute inset-0  bg-gray-800 shadow" aria-hidden="true" />
 
-                                      <div className="relative bg-gray-300 opacity-80">
+                                      <div className="relative bg-gray-800 opacity-90">
                                         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                                          <div className="grid grid-flow-row grid-cols-4 gap-x-2 gap-y-4 py-2">
+                                          <div className="grid grid-flow-row grid-cols-4 gap-x-2 gap-y-4 py-4">
                                             {category.featured.map((item) => (
                                               <div key={item.name} className="group relative">
-                                                <a href={item.href} className=" block font-medium hover:text-black hover:font-bold text-gray-900">
+                                                <a href={item.href} className=" block font-medium hover:text-gray-400 text-white">
                                                   <span className="absolute inset-0 z-10" aria-hidden="true" />
                                                   {item.name}
                                                 </a>
@@ -366,7 +369,7 @@ export default function Categories() {
                     </div>
 
                     {/* Logo (lg-) */}
-                    <a href="#" className="lg:hidden">
+                    <a href="/" className="lg:hidden">
                       <span className="sr-only">Your Company</span>
                       <img src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" className="h-8 w-auto" />
                     </a>
@@ -403,6 +406,6 @@ export default function Categories() {
           </nav>
         </header>
       </div>
-    </div>
+    </div >
   )
 }
