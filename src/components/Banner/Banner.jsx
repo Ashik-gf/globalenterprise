@@ -4,8 +4,10 @@ import bnr2 from "../../assets/images/banner/bar1.jpeg";
 import bnr1 from "../../assets/images/banner/bnr2.png";
 const Banner = () => {
   const [images, setImages] = useState([
-    "https://plus.unsplash.com/premium_photo-1682145181120-73cfdfc8a36d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bmV0d29ya3xlbnwwfHwwfHx8MA%3D%3D",
-    'https://as2.ftcdn.net/v2/jpg/01/92/15/43/1000_F_192154302_BkzcnmB3sLNObIYT6P8JNwCF0xfqdO8f.jpg'
+    "https://img.freepik.com/premium-photo/cartoon-characters-work-laptop-business-startup-teamwork-concept-communication-social-networks-3d-illustration_977617-16094.jpg",
+    'https://as2.ftcdn.net/v2/jpg/01/92/15/43/1000_F_192154302_BkzcnmB3sLNObIYT6P8JNwCF0xfqdO8f.jpg',
+    "https://thumbs.dreamstime.com/b/network-engineers-13159001.jpg",
+    "https://img.freepik.com/premium-photo/cartoon-illustration-people-working-computers-network-connected-devices_36682-149853.jpg"
     // Add more image URLs here
   ]);
 

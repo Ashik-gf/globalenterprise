@@ -295,11 +295,11 @@ export default function Categories() {
                               {({ open }) => (
                                 <>
                                   <div className="relative flex">
-                                    <Popover.Button className="relative z-10 flex items-center justify-center text-sm font-medium text-white transition-colors duration-200 ease-out">
+                                    <Popover.Button className=" outline-none relative z-10 flex items-center justify-center text-sm font-medium text-white transition-colors duration-200 ease-out">
                                       {category.name}
                                       <span
                                         className={classNames(
-                                          open ? 'bg-blue-500' : '',
+                                          open ? 'bg-white transition-color duration-1500 delay-200 ease-out' : '',
                                           'absolute inset-x-0 -bottom-px h-0.5 transition duration-200 ease-out'
                                         )}
                                         aria-hidden="true"
@@ -400,12 +400,12 @@ export default function Categories() {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </header>
-      </div>
+                </div >
+              </div >
+            </div >
+          </nav >
+        </header >
+      </div >
     </div >
   )
 }
